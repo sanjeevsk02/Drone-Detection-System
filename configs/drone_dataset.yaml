@@ -1,0 +1,7 @@
+path: C:\Users\sanju\drone detection system\data
+train: train/images
+val: valid/images
+test: test/images
+nc: 1
+names:
+- drone
