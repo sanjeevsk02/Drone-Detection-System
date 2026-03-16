@@ -56,7 +56,7 @@ Per-epoch metrics (mAP50, Precision, Recall) are printed during training. Best w
 streamlit run app.py
 ```
 
-Upload an image or video — the app will draw bounding boxes and show a **DRONE DETECTED** alert if a drone is found.
+Upload an image or video and the app will draw bounding boxes and show a **DRONE DETECTED** alert if a drone is found.
 
 ## Model
 
