@@ -1,0 +1,10 @@
+# ByteTrack config tuned for aerial drone tracking
+# Drones are small, fast-moving, and may briefly disappear — needs looser thresholds
+
+tracker_type: bytetrack
+track_high_thresh: 0.15  # lower than default (0.25) — drones have variable confidence
+track_low_thresh: 0.05   # recover drones with weak detections (distant/occluded)
+new_track_thresh: 0.15   # start tracks earlier for newly appearing drones
+track_buffer: 300        # keep lost tracks alive for 300 frames (~10s at 30fps)
+match_thresh: 0.5        # looser matching for fast-moving small objects
+fuse_score: True

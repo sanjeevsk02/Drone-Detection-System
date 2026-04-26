@@ -46,7 +46,7 @@ def on_epoch_end(trainer) -> None:
 
 # ─── Train ────────────────────────────────────────────────────────────────────
 
-def train(model_name: str, epochs: int, batch: int, imgsz: int) -> Path:
+def train(model_name: str, epochs: int, batch: int, imgsz: int, run_name: str = "drone_detector") -> Path:
     from ultralytics import YOLO
 
     if not DATA_YAML.exists():
@@ -77,7 +77,7 @@ def train(model_name: str, epochs: int, batch: int, imgsz: int) -> Path:
         imgsz=imgsz,
         device=device,
         project=str(ROOT / "runs" / "train"),
-        name="drone_detector",
+        name=run_name,
         exist_ok=True,
         single_cls=True,
         patience=20,
@@ -130,9 +130,10 @@ def parse_args():
     p.add_argument("--epochs", type=int, default=100)
     p.add_argument("--batch",  type=int, default=16)
     p.add_argument("--imgsz",  type=int, default=640)
+    p.add_argument("--name",   default="drone_detector", help="Run name under runs/train/")
     return p.parse_args()
 
 
 if __name__ == "__main__":
     args = parse_args()
-    train(args.model, args.epochs, args.batch, args.imgsz)
+    train(args.model, args.epochs, args.batch, args.imgsz, args.name)
